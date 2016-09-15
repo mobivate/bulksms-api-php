@@ -101,6 +101,39 @@ $responseXml = $bulksms->sendBatch($batch);
 ```
 see [demo/Demo.php](demo/Demo.php)
 
+### Schedule message
+```php
+require_once("bulksms/BulkSMS.php");
+$bulksms = new Blender\Client\BulkSMS();
+$bulksms->login($USERNAME, $PASSWORD);
+$batch = new Blender\Client\BatchMessageMultiBody();
+
+# Schedule message with date/time/timezone
+// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+$batch->setSchedule("2017-01-01T15:24:04", "Australia/Melbourne");
+
+```
+see [demo/Demo.php](demo/Demo.php), and [list of timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+### Shorten URL
+```php
+# Set originator
+$batch->setOriginator("test");
+## Recipients ##
+$batch->addMSISDN("61000000001");
+# Set route id
+$batch->setRouteId($ROUTE_ID);
+# Set message body (for all recipients)
+$batch->setBody("Batch with URL: http://www.mydomain.com/specialoffer");
+
+// -------[ SHORT URL ]--------
+$batch->setShortUrl(true);
+// ----------------------------
+
+# Send message
+$responseXml = $bulksms->sendBatch($batch);
+```
+see [demo/Demo.php](demo/Demo.php)
 
 ### Receive SMS
 
@@ -112,6 +145,7 @@ $originator = $incomingMessage->getOriginator();
 $body = $incomingMessage->getBody();
 ```
 see [demo/MOHandler.php](demo/MOHandler.php)
+
 
 ### Receive Receipt
 

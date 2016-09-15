@@ -32,6 +32,9 @@ $batch->setBody("Batch single <message> in 漢語");
 $batch->addMSISDN($recipient);
 // You can add as many as you like.
 
+# Schedule message for sending later
+$batch->setSchedule("2017-01-01T15:24:04", "Australia/Melbourne");
+
 # Dont filter duplicates - will send two messages to same recipient
 // $batch->addMSISDN($recipient);
 // $batch->setFilterDuplicaets(false);
@@ -66,6 +69,25 @@ $batch->addRecipient2($recipient, "different message with unicode טוקיו 東
 $longtext = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse auctor turpis at nunc rutrum, eget sodales turpis molestie. Nullam mattis sit amet urna et tristique. Vivamus nec justo et dui sed. 200+ chars";
 $batch->addRecipient("orignew", $recipient, $longtext);
 # Uncomment to run
-$responseXml =  $bulksms->sendBatch($batch);
+//$responseXml =  $bulksms->sendBatch($batch);
+echo "Response: {$responseXml}\n";
+
+# ----------------------------------------------------------------------------------------------------------------
+
+// EXAMPLE 4 - Shorten URL
+
+$batch = new Blender\Client\BatchMessageMultiBody();
+// Set defaults
+$batch->setOriginator("test");
+$batch->setRouteId($ROUTE_ID);
+$batch->setBody("Batch single message");
+$batch->addRecipient1($recipient);
+
+// Enable short url
+$batch->setShortUrl(true);
+// -----------------------
+
+# Uncomment to run
+//$responseXml =  $bulksms->sendBatch($batch);
 echo "Response: {$responseXml}\n";
 
