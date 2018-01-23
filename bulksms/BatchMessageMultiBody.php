@@ -61,7 +61,7 @@ class BatchMessageMultiBody extends BatchMessage {
         $this->addRecipient(null, $recipient, null, null, null);
     }
 
-    public function toXml() {
+   public function toXml($name) {
         $dom = new DOMDocument('1.0');
         $batch = parent::toXml('batchmulti');
         $msg = $dom->importNode($batch, true);
@@ -89,9 +89,9 @@ class BatchMessageMultiBody extends BatchMessage {
 
 /*
 $msg = new BatchMessageMultiBody();
-$msg->setOriginator("asaf");
-$msg->addRecipient1("61417188345");
-$msg->addRecipient1("000000");
+$msg->setOriginator("test");
+$msg->addRecipient1("YOUR NUMBER HERE"); // international format, no spaces
+#$msg->addRecipient1("000000");
 
 $dom = new DOMDocument('1.0');
 $dom->formatOutput = true;
