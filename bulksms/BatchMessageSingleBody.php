@@ -53,7 +53,7 @@ class BatchMessageSingleBody extends BatchMessage {
 		$this->recipients[] = $rec;
 	}
 
-    public function toXml() {
+    public function toXml($name) {
         $dom = new DOMDocument('1.0');
         $batch = parent::toXml('batchsingle');
         $msg = $dom->importNode($batch, true);
@@ -81,8 +81,8 @@ class BatchMessageSingleBody extends BatchMessage {
 /*
 
 $msg = new BatchMessageSingleBody();
-$msg->setOriginator("asaf");
-$msg->addMSISDN("61417188345");
+$msg->setOriginator("your name");
+$msg->addMSISDN("YOUR NUMBER"); // international format
 
 $dom = new DOMDocument('1.0');
 $dom->formatOutput = true;
