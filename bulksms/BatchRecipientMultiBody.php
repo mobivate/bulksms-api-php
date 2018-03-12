@@ -73,9 +73,9 @@ class BatchRecipientMultiBody  {
 		$this->routeId = $routeId;
 	}
 
-    public function toXml($name = "recipient") {
+    public function toXml($name=null) {
         $dom = new DOMDocument('1.0');
-        $recipient = $dom->createElement($name);
+        $recipient = $dom->createElement("recipient");
 
         foreach($this as $key => $value) {
             if($value == null)

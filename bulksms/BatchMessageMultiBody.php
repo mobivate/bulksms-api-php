@@ -61,7 +61,7 @@ class BatchMessageMultiBody extends BatchMessage {
         $this->addRecipient(null, $recipient, null, null, null);
     }
 
-   public function toXml($name) {
+   public function toXml($name=null) {
         $dom = new DOMDocument('1.0');
         $batch = parent::toXml('batchmulti');
         $msg = $dom->importNode($batch, true);

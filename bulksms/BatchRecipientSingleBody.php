@@ -43,7 +43,7 @@ class BatchRecipientSingleBody {
         $this->recipient = $recipient;
     }
 
-    public function toXml() {
+    public function toXml($name=null) {
         $dom = new DOMDocument('1.0');
         $recipient = $dom->createElement('recipient');
         foreach ($this as $key => $value) {

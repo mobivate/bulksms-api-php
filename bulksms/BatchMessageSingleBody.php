@@ -53,7 +53,7 @@ class BatchMessageSingleBody extends BatchMessage {
 		$this->recipients[] = $rec;
 	}
 
-    public function toXml($name) {
+    public function toXml($name=null) {
         $dom = new DOMDocument('1.0');
         $batch = parent::toXml('batchsingle');
         $msg = $dom->importNode($batch, true);
