@@ -50,7 +50,8 @@ class BatchRecipientSingleBody {
             if ($value == null)
                 continue;
 
-            $item = $dom->createElement($key, $value);
+			$item = $dom->createElement($key);
+			$item->appendChild($dom->createTextNode($value));
             $recipient->appendChild($item);
         }
         return $recipient;
