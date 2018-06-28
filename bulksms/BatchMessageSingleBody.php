@@ -70,7 +70,8 @@ class BatchMessageSingleBody extends BatchMessage {
                 }
                 $msg->appendChild($recipients);
             } else {
-                $item = $dom->createElement($key, $value);
+                $item = $dom->createElement($key);
+	            $item->appendChild($dom->createTextNode($value));
                 $msg->appendChild($item);
             }
         }
