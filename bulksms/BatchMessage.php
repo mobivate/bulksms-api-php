@@ -41,7 +41,6 @@ class BatchMessage {
     public function isShortUrl() {
         return $this->shortUrl;
     }
-<<<<<<< HEAD
 
     /**
      * @param boolean $shortUrl
@@ -128,94 +127,6 @@ class BatchMessage {
         $this->messageSpread = $messageSpread;
     }
 
-=======
-
-    /**
-     * @param boolean $shortUrl
-     */
-    public function setShortUrl($shortUrl) {
-        $this->shortUrl = $shortUrl;
-    }
-
-    public function getRouteId() {
-        return $this->routeId;
-    }
-
-    public function setRouteId($routeId) {
-        $this->routeId = $routeId;
-    }
-
-    public function isProcessOnDelivery() {
-        return $this->processOnDelivery;
-    }
-
-    public function setProcessOnDelivery($processOnDelivery) {
-        $this->processOnDelivery = $processOnDelivery;
-    }
-
-
-    public function getDeliveryScheduleDestinationTime() {
-
-        return null;
-    }
-
-    public function isFilterOptouts() {
-        return $this->filterOptouts;
-    }
-
-    public function setFilterOptouts($filterOptouts) {
-        $this->filterOptouts = $filterOptouts;
-    }
-
-    public function getId() {
-        return $this->id;
-    }
-
-    public function setId($id) {
-        $this->id = $id;
-    }
-
-    public function isDetailedResponse() {
-        return $this->detailedResponse;
-    }
-
-    public function setDetailedResponse($detailedResponse) {
-        $this->detailedResponse = $detailedResponse;
-    }
-
-    public function getBody() {
-        return $this->body;
-    }
-
-    public function setBody($body) {
-        $this->body = $body;
-    }
-
-    public function getOriginator() {
-        return $this->originator;
-    }
-
-    public function setOriginator($originator) {
-        $this->originator = $originator;
-    }
-
-    public function getCreatingUserId() {
-        return $this->creatingUserId;
-    }
-
-    public function setCreatingUserId($creatingUserId) {
-        $this->creatingUserId = $creatingUserId;
-    }
-
-    public function getMessageSpread() {
-        return $this->messageSpread;
-    }
-
-    public function setMessageSpread($messageSpread) {
-        $this->messageSpread = $messageSpread;
-    }
-
->>>>>>> f2e98d177df28f251b3cc9a1c227d33a81686780
     public function setSchedule($time, $timezone) {
         $pattern = '/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/';
         if (!preg_match($pattern, $time)) {
@@ -233,11 +144,9 @@ class BatchMessage {
             if ($value == null)
                 continue;
 
-            $item = $dom->createElement($key);
-            $item->appendChild($dom->createTextNode($value));
+            $item = $dom->createElement($key, $value);
             $elem->appendChild($item);
         }
         return $elem;
     }
-
 }
